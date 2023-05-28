@@ -1,5 +1,7 @@
 package efs.task.functional;
 
+import java.util.Locale;
+
 class PersonSpeakers {
 
     private final String HELLO = "Hello. I'm ";
@@ -19,7 +21,9 @@ class PersonSpeakers {
         //      "HELLO. I'M MARIA.", gdzie Maria to imię danej osoby przekazanej w argumencie metody say().
         //  Wywołanie metody say() interfejsu odbywa się w testach metody.
         //  Aby być pewnym, że użyta jest prawidłowa pisownia zaleca się użycie odpowiedniej stałej.
-        return null;
+        String HELLO_UP = HELLO.toUpperCase();
+        Speaker temp = (Person p) -> HELLO_UP + p.getName().toUpperCase();
+        return temp;
     }
 
     Speaker createGreetLocalSpeaker() {
@@ -28,6 +32,18 @@ class PersonSpeakers {
         //       "Hello. I'm Antonina.", gdzie Antonina to imię danej osoby przekazanej w argumencie metody say().
         //  Wywołanie metody say() interfejsu odbywa się w testach metody.
         //  Aby być pewnym, że użyta jest prawidłowa pisownia zaleca się użycie odpowiednich stałych.
-        return null;
+
+        Speaker temp = (Person p) -> {
+            if (p.getCountryOfLiving().equals(Country.USA)) {
+                return HELLO + p.getName();
+            }
+            else if (p.getCountryOfLiving().equals(Country.PL)) {
+                return CZESC + p.getName();
+            }
+            else {
+                return HALLO + p.getName();
+            }
+        };
+        return temp;
     }
 }
