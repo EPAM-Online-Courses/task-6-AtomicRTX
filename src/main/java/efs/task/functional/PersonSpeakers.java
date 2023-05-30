@@ -8,7 +8,6 @@ class PersonSpeakers {
     private final String CZESC = "Czesc. Jestem ";
     private final String HALLO = "Hallo, ich heiBe ";
 
-
     Speaker createGreetSpeaker() {
         // Implementacja interfejsu Speaker za pomocą wyrażenia lambda. Implementacja w tej postaci możliwa jest
         // dzięki temu, że Speaker jest interfejsem funkcyjnym - posiada tylko jedną metodę abstrakcyjną.
@@ -22,7 +21,7 @@ class PersonSpeakers {
         //  Wywołanie metody say() interfejsu odbywa się w testach metody.
         //  Aby być pewnym, że użyta jest prawidłowa pisownia zaleca się użycie odpowiedniej stałej.
         String HELLO_UP = HELLO.toUpperCase();
-        Speaker temp = (Person p) -> HELLO_UP + p.getName().toUpperCase();
+        Speaker temp = p -> HELLO_UP + p.getName().toUpperCase();
         return temp;
     }
 
@@ -33,7 +32,7 @@ class PersonSpeakers {
         //  Wywołanie metody say() interfejsu odbywa się w testach metody.
         //  Aby być pewnym, że użyta jest prawidłowa pisownia zaleca się użycie odpowiednich stałych.
 
-        Speaker temp = (Person p) -> {
+        Speaker temp = p -> {
             if (p.getCountryOfLiving().equals(Country.USA)) {
                 return HELLO + p.getName();
             }
